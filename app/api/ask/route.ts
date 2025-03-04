@@ -1,56 +1,46 @@
 import { NextResponse } from 'next/server';
 import { Ollama } from '@langchain/ollama'; 
 import { SerpAPI } from '@langchain/community/tools/serpapi'; 
-import { AgentExecutor, createReactAgent } from 'langchain/agents'; 
-import { ChatPromptTemplate } from '@langchain/core/prompts'; 
+import { AgentExecutor, createStructuredChatAgent } from 'langchain/agents';
+import { ChatPromptTemplate } from '@langchain/core/prompts';
 
 export async function POST(request: Request) {
   try {
-    const { query } = await request.json(); 
+    const { query } = await request.json();
     console.log('Received query:', query);
 
-    const llm = new Ollama({ model: 'llama2' });
-    console.log('Ollama model configured:', llm);
+    const llm = new Ollama({ model: 'mistral' }); 
 
     const tools = [new SerpAPI(process.env.SERPAPI_API_KEY)];
-    console.log('Tools configured:', tools);
 
     const prompt = ChatPromptTemplate.fromMessages([
-      ['system', 'You are an AI assistant that answers questions using web search tools.'],
+      ['system', 'You are an AI assistant that answers user queries using web search tools.'],
       ['human', '{input}'],
       ['system', 'Available tools: {tools}\nTool names: {tool_names}\nScratchpad: {agent_scratchpad}'],
     ]);
 
-    const agent = await createReactAgent({
+    const agent = await createStructuredChatAgent({
       llm,
       tools,
       prompt,
     });
 
-    console.log('Agent created:', agent);
-
-    
-    const executor = AgentExecutor.fromAgentAndTools({
+    const executor = new AgentExecutor({
       agent,
       tools,
     });
 
-    console.log('Executor created:', executor);
-
-    const response = await executor.invoke({ input: query }); 
+    const response = await executor.invoke({ input: query });
     console.log('Raw response:', response);
 
-    let parsedResponse;
-    try {
-      parsedResponse = JSON.parse(response?.output ?? '{}');
-    } catch (error) {
-      console.error('Error parsing LLM output:', error);
-      parsedResponse = { error: 'Invalid JSON output from LLM' };
+    let outputText;
+    if (typeof response?.output === 'string') {
+      outputText = response.output;
+    } else {
+      outputText = JSON.stringify(response?.output);
     }
 
-    console.log('Parsed response:', parsedResponse);
-
-    return NextResponse.json(parsedResponse);
+    return NextResponse.json({ answer: outputText });
   } catch (error) {
     console.error('Error in API route:', error);
     return NextResponse.json(
@@ -59,4 +49,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
