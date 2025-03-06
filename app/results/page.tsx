@@ -1,9 +1,11 @@
 'use client'; 
 import { useSearchParams } from 'next/navigation'; 
-import { Inter } from 'next/font/google'; 
-import styles from '../styles/results.module.css'; 
+import { Montserrat } from 'next/font/google'; 
+import styles from '../styles/results.module.css';
+import Header from '../header/page'
+ 
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '600', '700'] }); 
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '600', '700'] }); 
 
 // Define the Results component as the default export.
 export default function Results() { 
@@ -12,7 +14,9 @@ export default function Results() {
 
   // Return the JSX for rendering the results page.
   return (
-    <div className={`${styles.container} ${inter.className}`}> 
+    <div className={`${styles.container} ${montserrat.className}`}> 
+      {/* Include the Header at the top of the page */}
+      <Header />
       {/* Container for the card with the answer */}
       <div className={styles.card}> 
         {/* Title of the answer */}

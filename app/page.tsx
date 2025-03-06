@@ -1,11 +1,11 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import styles from './styles/home.module.css';
+import Header from './header/page'
 
-// Configure the Inter font with specific subsets and weights.
-const inter = Inter({ subsets: ['latin'], weight: ['400', '600', '700'] });
+const monserrat = Montserrat({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 // Define the Home component as the default export.
 export default function Home() {
@@ -65,7 +65,9 @@ export default function Home() {
 
   // Return the JSX for rendering the home page.
   return (
-    <div className={`${styles.container} ${inter.className}`}>
+    <div className={`${styles.container} ${monserrat.className}`}>
+      {/* Include the Header at the top of the page */}
+      <Header />
       {/* Container for the card with the form */}
       <div className={styles.card}>
         {/* Title of the form */}
