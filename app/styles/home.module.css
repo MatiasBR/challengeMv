@@ -38,7 +38,10 @@
   border: 2px solid #ccc;
   background: #f9f9f9;
   color: #333;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s; 
+  overflow-wrap: break-word; 
+  word-wrap: break-word;
+  white-space: pre-line; 
 }
 
 .input:focus {

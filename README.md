@@ -1,4 +1,3 @@
-```markdown
 # Full Stack Developer Challenge - Next.js & LangChain.js
 
 ## Project Description

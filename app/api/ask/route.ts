@@ -4,6 +4,8 @@ import { TavilySearchResults } from '@langchain/community/tools/tavily_search';
 import { AgentExecutor, createStructuredChatAgent } from 'langchain/agents';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const { query } = await request.json();
@@ -49,8 +51,8 @@ export async function POST(request: Request) {
       outputText = JSON.stringify(response?.output);
     }
     
-
     return NextResponse.json({ answer: outputText });
+
   }catch (error) {
       console.error('Error in API route:', error);
       if (error instanceof Error) {
