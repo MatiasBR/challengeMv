@@ -1,105 +1,69 @@
 .container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background-color: #32387e; 
+  height: 100vh;
+  background: linear-gradient(135deg, #2c2c6c, #3a3a9d);
+  font-family: var(--font-inter);
   padding: 20px;
-  font-family: 'Arial', sans-serif;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
 }
 
 .title {
-  font-size: 3rem;
-  color: #050404; 
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.chatContainer {
-  width: 100%;
-  max-width: 600px;
-  background-color: #b3b0b0; 
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  padding: 20px;
-  margin-bottom: 20px;
-  overflow-y: auto;
-  max-height: 400px;
-  scroll-behavior: smooth;
-}
-
-.message {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.messageContent {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.userMessage {
-  justify-content: flex-end;
-}
-
-.botMessage {
-  justify-content: flex-start;
-}
-
-.messageText {
-  margin: 0;
-  font-size: 1rem;
-  padding: 12px;
-  border-radius: 8px;
-  background-color: #ffffff; 
-  color: #585858;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  max-width: 80%;
-  word-wrap: break-word;
+  font-size: 2.5rem;
+  color: #222;
+  margin-bottom: 15px;
 }
 
 .form {
   display: flex;
-  width: 100%;
-  max-width: 600px;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .input {
-  flex: 1;
+  width: 100%;
   padding: 12px;
   font-size: 1rem;
   border-radius: 6px;
-  border: 1px solid #bcbcbc;
-  background-color: #f9f9f9; /* Fondo claro */
-  outline: none;
-  color: #2c2c2c;
-  transition: border-color 0.2s ease-in-out;
+  border: 2px solid #ccc;
+  background: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input:focus {
-  border-color: #686767; 
+  border-color: #3a3a9d;
+  box-shadow: 0 0 8px rgba(58, 58, 157, 0.3);
+  outline: none;
 }
 
 .button {
-  padding: 12px 20px;
-  font-size: 1rem;
+  padding: 12px;
+  font-size: 1.1rem;
   border-radius: 6px;
   border: none;
-  background-color: #2c2c2c; 
-  color: #ffffff;
+  background-color: #3a3a9d;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
-  background-color: #1a1a1a; 
+  background-color: #2c2c6c;
+  transform: scale(1.05);
 }
 
 .button:disabled {
-  background-color: #bcbcbc; 
+  background-color: #bcbcbc;
   cursor: not-allowed;
 }
