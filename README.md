@@ -49,12 +49,11 @@ The system consists of:
    API key is required to use the Tavily APIs. All Tavily endpoints require authentication via API keys. You can obtain a free API key by registering on their website.
 
 4. **Run Ollama**:
-   [Download Ollama](https://ollama.com/download) and install it locally.
-   Run   
+   [Download Ollama](https://ollama.com/download) and install it locally.  
    ```bash
    ollama run mistral
    ``` 
-   to download and install the model locally (Requires 4.1GB and 8GB of RAM)
+   Run to download and install the model locally (Requires 4.1GB and 8GB of RAM)
    Open http://localhost:11434 to check if Ollama is running.
 
 
