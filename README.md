@@ -1,5 +1,8 @@
 # Full Stack Developer Challenge - Next.js & LangChain.js
 
+## Explainer Video
+- [Youtube](https://youtu.be/OYTd07YO5ek)
+
 ## Preview
 
 ![Image 1](public/queryPreview.png)
