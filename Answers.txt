@@ -1,0 +1,31 @@
+Preguntas de Alto Nivel
+
+1. ¿Cómo implementarías la autenticación en este sistema?
+Para implementar autenticación, se podría usar NextAuth.js o Firebase Authentication. 
+Esto permitiría a los usuarios registrarse e iniciar sesión, 
+y se podrían proteger las rutas API y las páginas de la aplicación.
+
+2. ¿Cómo escalarías este sistema para manejar miles de solicitudes por hora?
+Balanceo de Carga: Usar un balanceador de carga como NGINX o AWS Elastic Load Balancer.
+Escalado Horizontal: Implementar múltiples instancias de la aplicación en un entorno de contenedores 
+(Docker, Kubernetes).
+Caché: Usar Redis o Memcached para cachear respuestas frecuentes.
+Bases de Datos Escalables: Usar una base de datos como PostgreSQL 
+con replicación o una solución NoSQL como MongoDB.
+
+3. ¿Cómo implementarías el registro de logs en tu API?
+Se podría usar Winston o Morgan para registrar logs en la API. 
+Los logs podrían almacenarse en un servicio centralizado como 
+ELK Stack (Elasticsearch, Logstash, Kibana) o CloudWatch en AWS.
+
+4. ¿Cómo probarías esta API?
+Pruebas Unitarias: Usar Jest y Supertest para probar las rutas API.
+Pruebas de Integración: Verificar que el agente de LangChain.js funcione correctamente con Ollama y Tavily.
+Pruebas de Carga: Usar herramientas como Artillery o JMeter para simular múltiples solicitudes y medir el rendimiento.
+
+Consideraciones y Tradeoffs
+
+Latencia: El uso de un modelo local (Ollama) puede introducir latencia, especialmente en hardware limitado.
+Precisión: Las respuestas generadas por el LLM dependen de la calidad de los datos de búsqueda y del modelo utilizado.
+Escalabilidad: Ejecutar un modelo local puede no ser escalable para miles de usuarios. 
+Una solución en la nube podría ser más adecuada.
